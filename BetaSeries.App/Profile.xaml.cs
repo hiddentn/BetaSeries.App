@@ -24,6 +24,7 @@ namespace BetaSeries.App
     public sealed partial class Profile : Page
     {
         UserService US;
+        BadgeService BS;
         AppUser User;
         RootMember UserInfo;
 
@@ -32,12 +33,22 @@ namespace BetaSeries.App
             this.InitializeComponent();
             User = new AppUser();
             US = new UserService(Config.AppConfig.ApiKey, Config.AppConfig.UserAgent, User.Token);
+            BS = new BadgeService(Config.AppConfig.ApiKey, Config.AppConfig.UserAgent, User.Token);
             
         }
 
         private  async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             UserInfo = await US.GetUserInfo();
+            if (UserInfo.Err.Count == 0 )
+            {
+                ProfileBanner.Source = UserInfo.User.Banner;
+                ProfilePic.Source = UserInfo.User.Avatar;
+                UserNameTB.Text = $"{UserInfo.User.login}#{UserInfo.User.Id}";
+                BadgeList Badges = await BS.GetUserBadges(UserInfo.User.Id);
+                BadgesView.ItemsSource = Badges.Badges;
+            }
+
         }
     }
 }

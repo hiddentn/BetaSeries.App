@@ -58,7 +58,7 @@ namespace BetaSeries.App
                     };
                     break;
                 case "Profile":
-                    Frame.Navigate(typeof(Profile));
+                    ContentFrame.Navigate(typeof(Profile));
                     break;
             }
         }

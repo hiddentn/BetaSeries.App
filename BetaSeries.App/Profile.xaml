@@ -5,10 +5,82 @@
     xmlns:local="using:BetaSeries.App"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
     mc:Ignorable="d"
     Loaded="Page_Loaded">
+    <Page.Resources>
+        <Style x:Key="RoundStyle" TargetType="controls:RoundImageEx">
+            <Setter Property="Width" Value="140" />
+            <Setter Property="Height" Value="140" />
+            <Setter Property="CornerRadius" Value="999" />
+        </Style>
+        <Style x:Key="MinRoundStyle" TargetType="controls:RoundImageEx">
+            <Setter Property="Width" Value="40" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="CornerRadius" Value="999" />
+        </Style>
+    </Page.Resources>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Name="HeaderContainer" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <controls:ImageEx x:Name="ProfileBanner" Stretch="UniformToFill" IsCacheEnabled="True" Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="0" Grid.RowSpan="2"/>
+            <controls:RoundImageEx Style="{StaticResource RoundStyle}" x:Name="ProfilePic" IsCacheEnabled="True" Grid.Column="0"  Grid.Row="1"/>
+
+            <TextBlock Name="UserNameTB" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="1" FontWeight="ExtraLight"  FontSize="40" Foreground="White"/>
+        </Grid>
+        <ScrollViewer  Grid.Row="1">
+            <Grid Name="StatsGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid Name="Badges" Grid.Column="1">
+                    <TextBlock Text="Achivements" FontSize="30" FontWeight="ExtraLight" Margin="5"/>
+                    <controls:AdaptiveGridView  Name="BadgesView" Margin="5,50,5,5">
+                        <controls:AdaptiveGridView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <controls:RoundImageEx Source="{Binding Url}"  Style="{StaticResource MinRoundStyle}"/>
+                                    <ToolTipService.ToolTip>
+                                        <Grid>
+                                            <StackPanel Margin="5">
+                                                <TextBlock Text="{Binding Name}" FontWeight="Bold"/>
+                                                <TextBlock  TextWrapping="Wrap" Text="{Binding Description}" FontWeight="ExtraLight"/>
+                                                <TextBlock Text="{Binding Date}" FontWeight="Medium" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </ToolTipService.ToolTip>
+                                </Grid>
+                            </DataTemplate>
+                        </controls:AdaptiveGridView.ItemTemplate>
+
+
+                    </controls:AdaptiveGridView>
+
+                </Grid>
+                
+
+            </Grid>
+        </ScrollViewer>
+
 
     </Grid>
 </Page>

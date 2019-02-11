@@ -8,10 +8,8 @@
     mc:Ignorable="d"
     Loaded="Page_Loaded">
     <Grid Name="MainGrid">
-        <NavigationView ItemInvoked="NavView_ItemInvoked" Name="NavView" OpenPaneLength="200" CompactModeThresholdWidth="500" ExpandedModeThresholdWidth="500" >
-            <NavigationView.AutoSuggestBox>
-                <AutoSuggestBox x:Name="ASB" QueryIcon="Find"/>
-            </NavigationView.AutoSuggestBox>
+        <NavigationView ItemInvoked="NavView_ItemInvoked" Name="NavView" OpenPaneLength="200" CompactModeThresholdWidth="500" ExpandedModeThresholdWidth="500" AlwaysShowHeader="False">
+            
             <NavigationView.MenuItems>
                 <NavigationViewItem Content="Home" Tag="Home" >
                     <NavigationViewItem.Icon>
