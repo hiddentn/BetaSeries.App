@@ -11,8 +11,8 @@ namespace BetaSeries.App
     {
         public static class AppConfig
         {
-            public static string UserAgent = "YOUAPP";
-            public static string ApiKey = "YOURKEY";
+            public static string UserAgent = "b8e128f36c107878d6b8c2596f0baf08";
+            public static string ApiKey = "eeac728edc12";
         }
 
         public static class loginBG

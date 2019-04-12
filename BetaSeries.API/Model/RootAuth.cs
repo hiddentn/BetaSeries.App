@@ -20,18 +20,6 @@ namespace BetaSeries.API.Model
 
         [JsonProperty("in_acount")]
         public bool LoggedIn;
-
-        //    {
-        //"user": {
-        //    "id": 277502,
-        //    "login": "Mdr120",
-        //    "xp": 4527,
-        //    "in_account": true
-        //},
-        //"token": "5c39251ed1b8",
-        //"hash": "51d9479c57d49bcd760d0a898df15023",
-        //"errors": []
-        //}
     }
     public class RootAuth
     {
